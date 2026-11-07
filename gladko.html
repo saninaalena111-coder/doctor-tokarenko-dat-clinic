@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Воронка ГЛАДКО · DAT clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F0ED; --surface:#FFFFFF; --ink:#22201E; --muted:#6A665F; --line:#DCD8D1;
+  --bronze:#86664A; --bronze-soft:#EFE7DE; --cool:#4F6E78; --cool-soft:#E3ECEE;
+  --warn:#8A4B2E; --warn-soft:#F6E9E1;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1A1918; --surface:#242220; --ink:#ECE8E2; --muted:#A39D94; --line:#3A3733;
+    --bronze:#C9A684; --bronze-soft:#3A3029; --cool:#8FB1BB; --cool-soft:#26343A;
+    --warn:#E0A27F; --warn-soft:#3B2A22; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1A1918; --surface:#242220; --ink:#ECE8E2; --muted:#A39D94; --line:#3A3733;
+  --bronze:#C9A684; --bronze-soft:#3A3029; --cool:#8FB1BB; --cool-soft:#26343A;
+  --warn:#E0A27F; --warn-soft:#3B2A22; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Manrope,"Segoe UI",Roboto,Arial,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.1;margin:0}
+h1{font-size:clamp(44px,7vw,84px);letter-spacing:-.5px}
+h2{font-size:clamp(30px,4vw,42px);margin-bottom:10px}
+h3{font-size:24px;margin:28px 0 10px}
+p{margin:0 0 10px}
+a{color:inherit}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;max-width:1220px;margin:0 auto;padding:0 28px}
+nav.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;padding:28px 0;font-size:14px}
+nav.side a{display:block;text-decoration:none;color:var(--muted);padding:6px 0 6px 12px;border-left:2px solid var(--line)}
+nav.side a:hover,nav.side a.on{color:var(--ink);border-left-color:var(--bronze)}
+nav.side .brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;color:var(--ink);border:0;padding:0 0 14px}
+main{padding:28px 0 80px;min-width:0}
+section{padding:46px 0 10px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.lead{font-size:18px;color:var(--muted);max-width:68ch}
+.hero{padding:40px 0 34px}
+.hero p.lead{margin-top:16px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:14px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:30px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 12px 12px;display:flex;flex-direction:column;gap:6px}
+.stage .n{font-size:12px;color:var(--bronze);font-weight:700}
+.stage .t{font-weight:700;font-size:14px}
+.stage a{display:block;font-size:13px;text-decoration:none;padding:5px 8px;border-radius:8px;background:var(--bg);color:var(--ink)}
+.stage a:hover{background:var(--bronze-soft)}
+.stage.key{border-color:var(--bronze);box-shadow:inset 0 0 0 1px var(--bronze)}
+.loop{margin-top:10px;border:1px dashed var(--bronze);border-radius:14px;padding:12px 16px;font-size:14px;color:var(--muted)}
+.loop b{color:var(--ink)}
+/* tables */
+.tbl{overflow-x:auto;margin:14px 0 6px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:13px;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+/* notes */
+.note{background:var(--warn-soft);border-radius:12px;padding:12px 16px;font-size:14.5px;margin:14px 0}
+.note b{color:var(--warn)}
+.tip{background:var(--cool-soft);border-radius:12px;padding:12px 16px;font-size:14.5px;margin:14px 0}
+/* accordions / bot blocks */
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:10px 0;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:14px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary .id{font-size:12px;font-weight:700;color:var(--bronze);background:var(--bronze-soft);border-radius:6px;padding:3px 7px;white-space:nowrap}
+summary .ttl{font-weight:600}
+summary .when{font-size:13px;color:var(--muted);white-space:nowrap}
+summary::after{content:"+";font-size:20px;color:var(--muted);grid-column:4}
+details[open] summary::after{content:"−"}
+details[open] summary{border-bottom:1px solid var(--line)}
+summary:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--bronze);outline-offset:2px}
+.body{padding:16px 18px 18px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px}
+.bubble{background:var(--bg);border-radius:4px 16px 16px 16px;padding:14px 16px;font-size:15px;white-space:pre-line}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.btn{font-size:13px;border:1px solid var(--cool);color:var(--cool);border-radius:999px;padding:5px 11px;background:transparent}
+.btn small{color:var(--muted);margin-left:4px}
+.meta{font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.meta b{color:var(--ink);font-weight:600;display:block;font-size:12.5px}
+.tag{display:inline-block;font-size:12px;background:var(--cool-soft);color:var(--cool);border-radius:6px;padding:2px 7px;margin:2px 3px 2px 0}
+/* swatches */
+.sw{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+.sw figure{margin:0;width:96px}
+.sw .ph{height:72px;border-radius:10px;display:flex;align-items:flex-end;padding:6px;font-size:10.5px;color:rgba(0,0,0,.6);border:1px solid var(--line)}
+.sw figcaption{font-size:12.5px;margin-top:5px}
+/* hooks */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chip{font:600 13px Manrope,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 13px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hooks td:first-child{width:36px;color:var(--muted)}
+.fn{font-size:12px;font-weight:700;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card h4{margin:0 0 6px;font-size:16px}
+.card p{font-size:14.5px;color:var(--muted);margin:0}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+.calc label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.seg button{font:500 13.5px Manrope,sans-serif;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:7px 11px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--bronze);background:var(--bronze-soft)}
+.res{background:var(--bg);border-radius:12px;padding:16px;white-space:pre-line;font-size:15px}
+.big{font-family:"Cormorant Garamond",Georgia,serif;font-size:40px;line-height:1;margin:4px 0 8px}
+footer{font-size:13px;color:var(--muted);padding:30px 0}
+@media (max-width:980px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.side{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;overflow-x:auto;gap:4px;padding:10px 0;white-space:nowrap;padding-top:calc(env(safe-area-inset-top,0px) + 10px)}
+  nav.side a{border-left:0;border-bottom:2px solid transparent;padding:6px 10px}
+  nav.side a.on{border-bottom-color:var(--bronze)}
+  nav.side .brand{display:none}
+  .body,.calc,.cols{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  summary{grid-template-columns:auto 1fr}
+  summary .when{grid-column:2}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="side" id="nav">
+  <span class="brand">DAT clinic · лазер</span>
+  <a href="#map">Схема воронки</a>
+  <a href="#position">Позиционирование</a>
+  <a href="#gladko">Что берём у GLADKO SPACE</a>
+  <a href="#tags">Метки и поля</a>
+  <a href="#start">Старт бота</a>
+  <a href="#test">Тест</a>
+  <a href="#calc">Калькулятор</a>
+  <a href="#memo">Памятка</a>
+  <a href="#lead">Подбор и заявка</a>
+  <a href="#warm">Догрев</a>
+  <a href="#onboard">Онбординг</a>
+  <a href="#perks">Фишки для гостей</a>
+  <a href="#video">Видео для бота</a>
+  <a href="#admin">Администратор</a>
+  <a href="#hooks">Хуки</a>
+  <a href="#check">Что согласовать</a>
+</nav>
+<main>
+<header class="hero">
+  <h1>Воронка ГЛАДКО</h1>
+  <p class="lead">Лазерная эпиляция в DAT clinic: от ролика до повторной процедуры. Тексты бота, задержки, метки, тест, калькулятор, онбординг и хуки для контента.</p>
+  <div class="facts">
+    <span><b>5</b> входов: ГЛАДКО, ТЕСТ, ЗАПИСЬ, ПОДАРОК, ПОДРУГА</span>
+    <span><b>9</b> касаний догрева за 14 дней</span>
+    <span><b>9</b> шагов онбординга</span>
+    <span><b>40</b> хуков</span>
+  </div>
+</header>
+
+<section id="map">
+  <h2>Схема воронки</h2>
+  <p class="lead">Нажмите на шаг, чтобы перейти к текстам бота.</p>
+  <div class="flow">
+    <div class="stage"><span class="n">1</span><span class="t">Контент</span><a href="#hooks">Ролик с хуком</a><a href="#hooks">Финал: кодовое слово</a></div>
+    <div class="stage"><span class="n">2</span><span class="t">Вход в бот</span><a href="#start">Согласие</a><a href="#start">Меню «Что интереснее?»</a></div>
+    <div class="stage key"><span class="n">3</span><span class="t">Польза</span><a href="#test">Тест «Подойдёт ли лазер»</a><a href="#calc">Калькулятор затрат</a><a href="#memo">Памятка</a></div>
+    <div class="stage"><span class="n">4</span><span class="t">Выбор</span><a href="#lead">Подбор пакета</a><a href="#lead">Предложение</a></div>
+    <div class="stage key"><span class="n">5</span><span class="t">Заявка</span><a href="#lead">Имя, связь, время</a><a href="#lead">Уведомление администратору</a></div>
+    <div class="stage"><span class="n">6</span><span class="t">После записи</span><a href="#onboard">Подготовка и напоминания</a><a href="#onboard">Уход, отзыв, повтор</a></div>
+  </div>
+  <div class="loop"><b>Не записался →</b> <a href="#warm">9 касаний за 14 дней</a> → снова к подбору пакета. <b>Слово ЗАПИСЬ</b> → сразу к заявке, минуя пользу.</div>
+</section>
+
+<section id="position">
+  <h2>Позиционирование: лазер в клинике</h2>
+  <p class="lead">Почти все конкуренты в Геленджике — студии и кабинеты, они продают ценой. DAT продаёт безопасность и уровень клиники. О конкурентах не говорим — объясняем, как выбрать место.</p>
+  <div class="tbl"><table>
+    <tr><th>Критерий</th><th>DAT clinic</th><th>Как сказать в контенте</th></tr>
+    <tr><td>Медицинская лицензия</td><td>Клиника с лицензией</td><td>«Лазерная эпиляция — медицинская услуга. Спросите лицензию — её можно проверить в реестре»</td></tr>
+    <tr><td>Кто основатель</td><td>Главный врач: дерматовенеролог, косметолог</td><td>«Протоколы клиники утверждает врач»</td></tr>
+    <tr><td>Перед курсом</td><td>Осмотр, фототип, противопоказания</td><td>«Перед первой процедурой вас осмотрят — это не формальность»</td></tr>
+    <tr><td>Аппарат</td><td>Диодный RUIKD LAMIS XL, 808 нм, охлаждение до −16 °C</td><td>«Охлаждение до −16 °C — поэтому процедура переносится мягче»</td></tr>
+    <tr><td>Если реакция кожи</td><td>Врач в клинике</td><td>«Если кожа отреагирует, рядом врач, а не только мастер»</td></tr>
+    <tr><td>Сервис</td><td>Пространство клиники</td><td>«Визит, а не процедура на бегу» — см. фишки для гостей</td></tr>
+  </table></div>
+  <div class="note"><b>Важно по формулировкам.</b> «Аналогов в Геленджике нет», «единственный», «лучший» — только если это можно подтвердить документами (например, письмом поставщика). Иначе это нарушает закон о рекламе. Безопасная замена: «аппарат премиум-класса», «новый диодный лазер в DAT clinic». Фразу «многие кабинеты выдают себя за клиники» не используем — вместо неё ролик «3 признака, что вы в клинике».</div>
+  <h3>Три признака, что вы в клинике</h3>
+  <div class="cols">
+    <div class="card"><h4>Лицензия на медицинскую деятельность</h4><p>Её номер есть в подписях клиники и на сайте, его можно проверить в реестре.</p></div>
+    <div class="card"><h4>Осмотр перед курсом</h4><p>Специалист спрашивает о лекарствах, загаре, противопоказаниях и смотрит фототип.</p></div>
+    <div class="card"><h4>Врач в команде</h4><p>Протоколы и сложные случаи — под контролем врача.</p></div>
+    <div class="card"><h4>Карта пациента</h4><p>Параметры каждой процедуры записываются, следующая подстраивается под реакцию кожи.</p></div>
+  </div>
+</section>
+
+<section id="gladko">
+  <h2>Что берём у GLADKO SPACE</h2>
+  <p class="lead">Клиника лазера и косметологии в Нижнем Новгороде, 20,6 тыс. подписчиков. Их путь: слово ТЕСТ в директ → бот сразу присылает карточку «Лазерная эпиляция: подходит или нет?» → 6 вопросов за 5 минут → результат и запись. Тест живёт в Telegram-боте @gladkospacebot: в их канале под постами стоит кнопка «Пройти тестирование» с отдельной ссылкой на каждый пост.</p>
+  <h3>Их воронка по шагам (пройдена 7 ноября)</h3>
+  <div class="tbl"><table>
+    <tr><th>Шаг</th><th>Что приходит</th><th>Приём</th></tr>
+    <tr><td>1. Директ Instagram, слово ТЕСТ</td><td>Карточка «Лазерная эпиляция: подходит или нет?», 6 вопросов за 5 минут, кнопка в Telegram</td><td>Обещание вместо согласия</td></tr>
+    <tr><td>2. Telegram-бот @gladkospacebot</td><td>Видео: специалист лазера в халате представляется по имени. «Готовы? Жмите ДА»</td><td>Живой человек с первой секунды</td></tr>
+    <tr><td>3. Имя и телефон ДО теста</td><td>«Чтобы сохранить результат и отправить рекомендации». Телефон — кнопкой «Отправить мой номер», пропустить нельзя</td><td>Лид с телефоном даже если тест брошен</td></tr>
+    <tr><td>4. Согласие</td><td>Одна кнопка: данные + сообщения в чате</td><td>Одно согласие на всё</td></tr>
+    <tr><td>5. Вопросы 1–3</td><td>Цвет волос в бикини и подмышках · цвет кожи (картинка: 4 пронумерованных фото кожи) · реакция на бритьё: чёрные точки, высыпания, вросшие волосы с эмодзи 😌🙂🥲😭</td><td>Ответы цифрами 1️⃣–4️⃣, картинки к вопросам</td></tr>
+    <tr><td>6. Вопросы 4–5</td><td>«Мы практически закончили» · как удаляете сейчас · есть ли загар</td><td>Прогресс, чтобы не бросили</td></tr>
+    <tr><td>7. Видеокружок + вопрос 6</td><td>Кружок специалиста 17 сек, затем «Имя, мы на финишной прямой»: пробовали ли лазер раньше</td><td>Обращение по имени</td></tr>
+    <tr><td>8. «Загружаем ваш результат… ⌛»</td><td>Пауза около минуты</td><td>Ощущение «считается лично»</td></tr>
+    <tr><td>9. Результат</td><td>Одинаковая для всех продажа аппарата DEKA Moveo: 6–8 процедур, без боли, круглый год, на загаре; лицензия и врачи. Кнопка «Позвать менеджера в чат» → пробный визит</td><td>Ответы теста на результат не влияют</td></tr>
+    <tr><td>10. Видеокружок 35 сек</td><td>Специалист после результата</td><td>Доверие перед записью</td></tr>
+  </table></div>
+  <h3>Три прохода с разными ответами</h3>
+  <div class="tbl"><table>
+    <tr><th>Ответы</th><th>Проход 1</th><th>Проход 2</th><th>Проход 3</th></tr>
+    <tr><td>Волосы</td><td>Тёмные</td><td>Светлые</td><td>Тёмные</td></tr>
+    <tr><td>Кожа</td><td>Светлая</td><td>Очень светлая</td><td>Тёмная</td></tr>
+    <tr><td>После бритья</td><td>Высыпания</td><td>Вросшие, воспаления</td><td>Всё хорошо</td></tr>
+    <tr><td>Метод сейчас</td><td>Бритва</td><td>Шугаринг</td><td>Бритва</td></tr>
+    <tr><td>Загар</td><td>Нет</td><td>Есть</td><td>Нет</td></tr>
+    <tr><td>Лазер раньше</td><td>Нет, но хочу</td><td>Не впечатлил</td><td>Понравился</td></tr>
+    <tr><td><b>Что пришло</b></td><td>Текст про DEKA Moveo → кружок 35 сек</td><td>Кружок 38 сек → тот же текст</td><td>Кружок 43 сек → тот же текст</td></tr>
+  </table></div>
+  <div class="tip"><b>Вывод.</b> Вопросы 1–5 на результат не влияют: ни светлые волосы, ни загар, ни воспаления не меняют ответ. Ветвится только вопрос 6 — на каждый ответ свой видеокружок специалиста (по всей видимости, работа с опытом: «не впечатлил», «понравился», «хочу попробовать»). Тест — способ вовлечь и собрать телефон, а не диагностика. Их ответы про загар и светлые волосы остаются для менеджера.</div>
+  <div class="tip"><b>Ещё детали.</b> Повторный /start заново спрашивает имя и телефон. На текст вместо номера бот отвечает обрезанной фразой «то, что вы указали, не выглядит как …» — недоработка. Имя для обращения бот берёт из Telegram-контакта, а не из ответа на вопрос «как к вам обращаться».</div>
+  <div class="cols">
+    <div class="card"><h4>Берём</h4><p>Видеокружки специалиста лазера DAT: приветствие, перед последним вопросом, после результата. Картинки к вопросам. Фразы-счётчики «практически закончили». Паузу «загружаем результат». Обращение по имени.</p></div>
+    <div class="card"><h4>Делаем лучше</h4><p>Результат зависит от ответов (у них — один на всех). Телефон просим после результата, когда человек уже получил пользу — или тестируем оба варианта.</p></div>
+    <div class="card"><h4>Не берём</h4><p>«Навсегда», «абсолютно без боли», «в 2–3 раза быстрее аналогов» — такие обещания в рекламе медицинских услуг рискованны.</p></div>
+    <div class="card"><h4>Повод для записи</h4><p>У них — «пробный визит» и персональный менеджер. У нас можно так же назвать первую процедуру по пакету Mini.</p></div>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>У них</th><th>У нас</th></tr>
+    <tr><td>Слово ТЕСТ → «узнайте свой метод удаления волос»</td><td>ТЕСТ → «подойдёт ли вам лазер» + подбор пакета</td></tr>
+    <tr><td>Слово СТАРЕНИЕ → тест типа старения → протокол</td><td>Для anti-age клиники — позже, слово СТАРТ</td></tr>
+    <tr><td>Слово ПОДАРОК → привилегии до конкретной даты</td><td>ПОДАРОК → сертификаты и пакеты до 31 декабря</td></tr>
+    <tr><td>Ролик про атмосферу визита — 194 тыс. просмотров</td><td>Свой «ритуал визита» — ролик и стандарт сервиса</td></tr>
+    <tr><td>Пациенты — «гости», отзывы сериями «Гости ч.1–6»</td><td>Отзывы сериями в актуальных</td></tr>
+    <tr><td>Актуальные «Больно будет?», «ЛЭ вредно», «Почему мы?»</td><td>«Больно?», «Вредно?», «Почему DAT»</td></tr>
+    <tr><td>В каждой подписи — номер лицензии, адрес и часы</td><td>То же в каждой подписи</td></tr>
+  </table></div>
+</section>
+
+<section id="tags">
+  <h2>Метки и поля</h2>
+  <p class="lead">Создать в BotHelp до сборки. Задержки — только в окне 10:00–20:00 МСК.</p>
+  <h3>Метки</h3>
+  <div class="tbl"><table>
+    <tr><th>Группа</th><th>Метки</th><th>Кто ставит</th></tr>
+    <tr><td>Источник</td><td><span class="tag">src_gladko</span><span class="tag">src_test</span><span class="tag">src_zapis</span><span class="tag">src_podarok</span><span class="tag">src_friend</span></td><td>Бот, по слову</td></tr>
+    <tr><td>Согласия</td><td><span class="tag">consent_pd</span><span class="tag">consent_ads</span><span class="tag">no_ads</span></td><td>Бот</td></tr>
+    <tr><td>Польза</td><td><span class="tag">test_done</span><span class="tag">calc_done</span><span class="tag">memo_got</span></td><td>Бот</td></tr>
+    <tr><td>Результат теста</td><td><span class="tag">fit_good</span><span class="tag">fit_prep</span><span class="tag">fit_consult</span></td><td>Бот</td></tr>
+    <tr><td>Зоны</td><td><span class="tag">pkg_mini</span><span class="tag">pkg_classic</span><span class="tag">pkg_premium</span><span class="tag">pkg_deluxe</span><span class="tag">pkg_royal</span></td><td>Бот</td></tr>
+    <tr><td>Заявка</td><td><span class="tag">lead_laser</span> — останавливает догрев</td><td>Бот</td></tr>
+    <tr><td>Визит</td><td><span class="tag">booked</span><span class="tag">visited</span><span class="tag">abon_3</span><span class="tag">abon_6</span><span class="tag">course_done</span></td><td>Администратор</td></tr>
+    <tr><td>После визита</td><td><span class="tag">review_asked</span><span class="tag">review_done</span><span class="tag">friend_sent</span><span class="tag">friend_came</span><span class="tag">gift_friend</span><span class="tag">bday_sent</span></td><td>Бот и администратор</td></tr>
+  </table></div>
+  <h3>Поля</h3>
+  <div class="tbl"><table>
+    <tr><th>Поле</th><th>Тип</th><th>Что пишем</th></tr>
+    <tr><td>name</td><td>текст</td><td>Имя из анкеты</td></tr>
+    <tr><td>contact_way</td><td>текст</td><td>Написать в Telegram / позвонить + телефон</td></tr>
+    <tr><td>call_time</td><td>текст</td><td>Утро / день / вечер</td></tr>
+    <tr><td>skin_type · hair_color · concern</td><td>текст</td><td>Ответы теста</td></tr>
+    <tr><td>method · zones</td><td>текст</td><td>Ответы калькулятора</td></tr>
+    <tr><td>package</td><td>текст</td><td>Mini / Classic / Premium / Deluxe / Royal</td></tr>
+    <tr><td>visit_date</td><td>дата</td><td>Дата визита — ставит администратор</td></tr>
+    <tr><td>procedure_no</td><td>число</td><td>Номер процедуры в курсе — администратор</td></tr>
+    <tr><td>ref_code</td><td>число</td><td>Код пригласившей гостьи (для «Приведи подругу»)</td></tr>
+    <tr><td>birthday</td><td>дата</td><td>Дата рождения — спрашиваем после первого визита</td></tr>
+    <tr><td>consent_pd_date</td><td>дата</td><td>Дата согласия</td></tr>
+  </table></div>
+</section>
+
+<section id="start"><h2>Старт бота</h2><p class="lead">Общий вход для всех слов. Слово ТЕСТ ведёт сразу в тест, ЗАПИСЬ — в быструю заявку, ПОДАРОК — в сертификаты.</p><div data-blocks="start"></div></section>
+<section id="test"><h2>Тест «Подойдёт ли вам лазер»</h2><p class="lead">5 вопросов кнопками, 2 минуты. Итог — один из трёх результатов и подходящий пакет.</p><div data-blocks="test"></div></section>
+
+<section id="calc"><h2>Калькулятор затрат</h2>
+  <p class="lead">Два вопроса кнопками — бот отправляет готовый ответ под комбинацию. Ниже — рабочая модель: можно пощёлкать на встрече.</p>
+  <div class="calc" id="calcBox">
+    <div>
+      <label>Как вы сейчас удаляете волосы?</label>
+      <div class="seg" data-k="m"><button data-v="razor" aria-pressed="true">Станок</button><button data-v="sugar" aria-pressed="false">Шугаринг или воск</button></div>
+      <label>Какие зоны?</label>
+      <div class="seg" data-k="z"><button data-v="mini" aria-pressed="false">Бикини + подмышки</button><button data-v="classic" aria-pressed="true">+ голени</button><button data-v="premium" aria-pressed="false">+ ноги полностью</button></div>
+      <p style="font-size:13px;color:var(--muted)">Цены станка и шугаринга — средние допущения, заменить на цены Геленджика перед запуском.</p>
+    </div>
+    <div class="res" id="calcRes"></div>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Комбинация</th><th>Допущение</th><th>За год</th><th>За 5 лет</th><th>Абонемент 6 процедур</th></tr>
+    <tr><td>Станок · Mini</td><td>600 ₽ в месяц</td><td>7 200 ₽</td><td>36 000 ₽</td><td>13 100 ₽</td></tr>
+    <tr><td>Станок · Classic</td><td>900 ₽ в месяц</td><td>10 800 ₽</td><td>54 000 ₽</td><td>25 200 ₽</td></tr>
+    <tr><td>Станок · Premium</td><td>1 200 ₽ в месяц</td><td>14 400 ₽</td><td>72 000 ₽</td><td>34 200 ₽</td></tr>
+    <tr><td>Шугаринг · Mini</td><td>1 500 ₽ раз в 4 недели</td><td>19 500 ₽</td><td>97 500 ₽</td><td>13 100 ₽</td></tr>
+    <tr><td>Шугаринг · Classic</td><td>2 500 ₽ раз в 4 недели</td><td>32 500 ₽</td><td>162 500 ₽</td><td>25 200 ₽</td></tr>
+    <tr><td>Шугаринг · Premium</td><td>3 500 ₽ раз в 4 недели</td><td>45 500 ₽</td><td>227 500 ₽</td><td>34 200 ₽</td></tr>
+  </table></div>
+  <div class="note"><b>Честно о сравнении.</b> Курс лазера сокращает рост волос, но иногда нужны поддерживающие процедуры. В тексте бота говорим «курс», а не «навсегда», и не обещаем результат.</div>
+  <div data-blocks="calc"></div>
+</section>
+
+<section id="memo"><h2>Памятка «Первая процедура»</h2><p class="lead">Отдельный вход для тех, кто готов, но боится. Сроки подготовки сверить с протоколом клиники.</p><div data-blocks="memo"></div></section>
+<section id="lead"><h2>Подбор пакета и заявка</h2><p class="lead">Сюда приходят все ветки. Предложение — только в боте, не в Instagram.</p>
+  <div class="tbl"><table>
+    <tr><th>Ответ «какие зоны»</th><th>Пакет</th><th>Цена за процедуру</th><th>Абонемент на 6</th></tr>
+    <tr><td>Бикини и подмышки</td><td>Mini + 1 малая зона</td><td>2 500 ₽ вместо 3 600 ₽</td><td>13 100 ₽ · 2 200 ₽ за процедуру</td></tr>
+    <tr><td>+ голени</td><td>Classic + 1 малая зона</td><td>4 500 ₽ вместо 6 100 ₽</td><td>25 200 ₽ · 4 200 ₽</td></tr>
+    <tr><td>+ ноги полностью</td><td>Premium + 2 малые зоны</td><td>6 000 ₽ вместо 9 100 ₽</td><td>34 200 ₽ · 5 700 ₽</td></tr>
+    <tr><td>+ руки до локтя</td><td>Deluxe + 2 малые зоны</td><td>7 500 ₽ вместо 11 000 ₽</td><td>43 200 ₽ · 7 200 ₽</td></tr>
+    <tr><td>Всё тело</td><td>Royal: 5 больших + 3 малые зоны</td><td>9 000 ₽ вместо 13 200 ₽</td><td>52 200 ₽ · 8 700 ₽</td></tr>
+  </table></div>
+  <p style="font-size:14px;color:var(--muted)">Абонемент на 3 — в подарок малая зона и карбокситерапия. На 6 — ещё и «Ресурс»: мост в воронку Алёны Олеговны.</p>
+  <div data-blocks="lead"></div>
+</section>
+<section id="warm"><h2>Догрев, если не записался</h2><p class="lead">Цепочка стартует после пользы и останавливается меткой lead_laser или командой /stop. Только для тех, кто дал согласие на рассылку.</p><div data-blocks="warm"></div></section>
+<section id="onboard"><h2>Онбординг после записи</h2><p class="lead">Запускает администратор: ставит метку booked и дату визита. Цель — чтобы гость пришёл, вернулся на следующую процедуру и оставил отзыв.</p><div data-blocks="onboard"></div>
+  <div class="note"><b>Отзывы.</b> Правила Яндекс Карт запрещают отзывы за вознаграждение. Просим отзыв без подарка; подарки — только за «Приведи подругу».</div>
+</section>
+
+<section id="perks"><h2>Фишки для гостей</h2><p class="lead">Идеи из GLADKO SPACE, адаптированные под DAT. Каждая — и сервис, и повод для ролика.</p>
+  <div class="cols">
+    <div class="card"><h4>Ритуал визита</h4><p>Вода или чай на выбор, плед, тишина по желанию. Ролик «Как проходит визит» — по примеру их лучшего ролика про атмосферу.</p></div>
+    <div class="card"><h4>Приведи подругу</h4><p>Подруга получает подарок на первой процедуре, гостья — после того, как подруга пришла. Как это работает и какие метки ставить — схема ниже.</p></div>
+    <div class="card"><h4>Гости, а не клиенты</h4><p>Единое слово в общении и в отзывах: серия «Гости DAT».</p></div>
+    <div class="card"><h4>Подарок к дню рождения</h4><p>После первого визита бот спрашивает дату рождения. За 7 дней до праздника — сертификат −15 % на любую процедуру клиники, действует 14 дней. Размер скидки — на согласование.</p></div>
+    <div class="card"><h4>Сертификаты к Новому году</h4><p>Слово ПОДАРОК: пакет в красивой упаковке, срок предложения — до 31 декабря.</p></div>
+    <div class="card"><h4>Карта курса</h4><p>После каждой процедуры бот отмечает «3 из 6» — видно прогресс, проще не бросить курс.</p></div>
+  </div>
+  <h3>Как работает «Приведи подругу»</h3>
+  <p style="font-size:14.5px">Где доступно: кнопка в меню бота (С2), постоянное меню Telegram, результат теста (Т6а), подтверждение записи (О1), после курса (О9). Вместо имени — личный код гостьи: в имени легко ошибиться, в коде нет.</p>
+  <div class="tbl"><table>
+    <tr><th>Шаг</th><th>Что происходит</th><th>Метки и поля</th></tr>
+    <tr><td>ПП1. Гостья нажимает «Приведи подругу 🎁»</td><td>Бот: «Ваш личный код — {ID}. Перешлите подруге сообщение ниже 👇» и второе сообщение для пересылки: «Я хожу на лазер в DAT clinic. Напиши боту [ссылка] слово ПОДРУГА и мой код {ID} — подарок получим обе»</td><td><span class="tag">friend_sent</span>; код — ID подписчика в BotHelp (уникальный номер, системная переменная)</td></tr>
+    <tr><td>ПП2. Подруга пишет ПОДРУГА</td><td>Бот: «Напишите код, который вам прислала подруга — только цифры». Если ввела не цифры: «Код состоит из цифр — проверьте, пожалуйста». Дальше обычный путь: согласие, меню, тест</td><td><span class="tag">src_friend</span>, поле <span class="tag">ref_code</span></td></tr>
+    <tr><td>ПП3. Подруга оставляет заявку</td><td>В уведомлении администратору: «Пригласила гостья с кодом {ref_code}»</td><td><span class="tag">lead_laser</span></td></tr>
+    <tr><td>ПП4. Подруга пришла</td><td>Администратор ставит подруге visited, находит пригласившую в BotHelp по ID</td><td><span class="tag">friend_came</span> пригласившей</td></tr>
+    <tr><td>ПП5. Подарок</td><td>Метка friend_came запускает сообщение пригласившей: «Ваша подруга была у нас — малая зона в подарок на следующую процедуру 🤍». Подруга получает свой подарок на первой процедуре</td><td><span class="tag">gift_friend</span></td></tr>
+  </table></div>
+  <p style="font-size:14px;color:var(--muted)">Если в BotHelp получится сделать персональную ссылку с кодом внутри, подруге не придётся вводить код вручную — проверить при сборке.</p>
+</section>
+
+<section id="video"><h2>Видео для бота</h2>
+  <p class="lead">Что снять, о чём говорить и куда поставить. Тезисы — опора, рассказывать своими словами. Кружки — вертикально, на телефон, смотреть в камеру.</p>
+  <div class="tbl"><table>
+    <tr><th>№</th><th>Видео и содержание</th><th>Кто</th><th>Формат</th><th>Блок бота</th></tr>
+    <tr><td>1</td><td><b>Приветствие</b><br>Как зовут и сколько лет работает с лазером · «Помогу понять, подойдёт ли вам лазер» · тест — 5 вопросов, 2 минуты · в конце — результат и подходящий пакет</td><td>Специалист лазера</td><td>Кружок 20 сек</td><td>С0</td></tr>
+    <tr><td>2</td><td><b>Почему спрашиваем про загар</b><br>«Остался последний вопрос — про загар» · лазер работает по пигменту, на загорелой коже параметры другие · ответьте честно — подберём безопасное время для первой процедуры</td><td>Специалист лазера</td><td>Кружок 15–20 сек</td><td>Перед Т5</td></tr>
+    <tr><td>3</td><td><b>Результат «вам подойдёт лазер»</b><br>Что будет на первой процедуре: осмотр, проверка фототипа, очки, охлаждение · сколько длится · «можно прийти и просто посмотреть кабинет»</td><td>Специалист лазера</td><td>Кружок 25–30 сек</td><td>Т6а</td></tr>
+    <tr><td>4</td><td><b>Светлые и седые волосы</b><br>Почему лазер хуже работает на светлых волосах — в них мало пигмента · что посмотрим на консультации · честно: обещать результат до осмотра не будем</td><td>Специалист или врач</td><td>Кружок 25–30 сек</td><td>Т6в</td></tr>
+    <tr><td>5</td><td><b>Как подготовиться</b><br>Побрить зону за сутки · без шугаринга, воска, эпилятора 3–4 недели · без загара 2 недели · рассказать о лекарствах · не наносить крем и дезодорант на зону в день процедуры</td><td>Специалист лазера</td><td>Кружок 30–40 сек</td><td>П1, О2</td></tr>
+    <tr><td>6</td><td><b>«Это больно?»</b><br>Показывает насадку и охлаждение · на что похоже ощущение — тёплое покалывание · какие зоны чувствительнее · «скажете — сразу подстрою параметры»</td><td>Специалист лазера</td><td>Кружок 20 сек</td><td>Д1а</td></tr>
+    <tr><td>7</td><td><b>От двери до выхода</b><br>Ресепшен, чай или вода → короткая анкета и осмотр → кабинет, очки → процедура крупным планом → уход и запись на следующую. Без слов, с подписями на экране</td><td>Гостья + специалист</td><td>Видео 40–60 сек</td><td>Д2</td></tr>
+    <tr><td>8</td><td><b>Почему лазер — в клинике</b><br>Лазерная эпиляция — медицинская процедура · у клиники медицинская лицензия · перед курсом осмотр и противопоказания · если кожа отреагирует, рядом врач</td><td>Алёна Олеговна</td><td>Кружок 30 сек</td><td>Д3</td></tr>
+    <tr><td>9</td><td><b>Отзывы гостей (2–3 шт.)</b><br>Вопросы гостье: что было до лазера (бритьё, вросшие) · как прошла первая процедура · что изменилось · кому бы посоветовала</td><td>Гостьи, с согласия</td><td>Видео 20–30 сек</td><td>Д2а, Д4, Д5а</td></tr>
+    <tr><td>10</td><td><b>«Ждём вас»</b><br>Адрес и как найти вход · где оставить машину · брать с собой ничего не нужно · если опаздываете — напишите в бот</td><td>Администратор</td><td>Кружок 20 сек</td><td>О1</td></tr>
+    <tr><td>11</td><td><b>Уход после процедуры</b><br>Покраснение — нормально, пройдёт за несколько часов · 2–3 дня без бани и скрабов · SPF на открытые зоны · если что-то беспокоит — нажмите «Есть вопрос»</td><td>Специалист лазера</td><td>Кружок 20 сек</td><td>О4</td></tr>
+    <tr><td>12</td><td><b>Курс пройден</b><br>Поздравление · что такое «Ресурс» и почему дарим его после курса · как записаться</td><td>Алёна Олеговна</td><td>Кружок 30 сек</td><td>О9</td></tr>
+    <tr><td>13</td><td><b>Сертификат в упаковке</b><br>Руки открывают упаковку, крупно сертификат DAT clinic, подпись на экране</td><td>Без лица</td><td>Видео 10 сек</td><td>Г0</td></tr>
+    <tr><td>14</td><td><b>Приведи подругу</b><br>«Приходите вдвоём — так спокойнее» · как работает код · что получат обе</td><td>Администратор или специалист</td><td>Кружок 15–20 сек</td><td>ПП1</td></tr>
+  </table></div>
+  <p style="font-size:14px;color:var(--muted)">Картинки к тесту (тон кожи, цвет волос) и калькулятору — сгенерировать нейросетью.</p>
+</section>
+
+<section id="admin"><h2>Администратор: что приходит и что делать</h2>
+  <p class="lead">Все уведомления приходят в Telegram администратору. Вне рабочего времени бот сам отвечает: «Администратор ответит завтра с 10:00».</p>
+  <div class="tbl"><table>
+    <tr><th>Уведомление</th><th>Откуда</th><th>Что сделать</th><th>Срок ответа</th><th>Поставить метку</th></tr>
+    <tr><td>Новая заявка на лазер</td><td>Л3, З0</td><td>Написать или позвонить, подобрать дату, внести в расписание</td><td>15–30 минут в рабочее время</td><td><span class="tag">booked</span> + дата визита</td></tr>
+    <tr><td>Запрос консультации</td><td>Т6в</td><td>Записать на осмотр к специалисту или врачу</td><td>30 минут</td><td><span class="tag">booked</span></td></tr>
+    <tr><td>Вопрос администратору</td><td>Кнопки в Л2, Т6в, Д-цепочке</td><td>Ответить в чате бота, предложить запись</td><td>1 час</td><td>—</td></tr>
+    <tr><td>Нужно перенести</td><td>О3</td><td>Предложить 2 новые даты</td><td>1 час</td><td>Обновить дату визита</td></tr>
+    <tr><td>Есть вопрос после процедуры</td><td>О5</td><td>Ответить; если реакция кожи — передать специалисту или врачу</td><td>1 час</td><td>—</td></tr>
+    <tr><td>Заявка от подруги</td><td>ПОДРУГА</td><td>Записать; после визита найти пригласившую по коду (ID) и поставить ей метку</td><td>15–30 минут</td><td><span class="tag">friend_came</span> пригласившей</td></tr>
+    <tr><td>Гостья пришла</td><td>Расписание</td><td>Отметить визит и номер процедуры</td><td>В день визита</td><td><span class="tag">visited</span> + номер процедуры, абонемент</td></tr>
+    <tr><td>Курс пройден</td><td>Расписание</td><td>Отметить окончание курса</td><td>В день последней процедуры</td><td><span class="tag">course_done</span></td></tr>
+  </table></div>
+  <p style="font-size:14px;color:var(--muted)">Метки, которые ставит администратор, запускают онбординг. Если метку не поставить, гостья не получит подготовку, напоминания и просьбу об отзыве.</p>
+</section>
+
+<section id="hooks"><h2>Хуки и куда они ведут</h2><p class="lead">Первые 3 секунды ролика: плашка + та же фраза голосом. Фильтр показывает хуки для одной ветки.</p>
+  <div class="chips" id="chips"></div>
+  <div class="tbl"><table class="hooks"><thead><tr><th>#</th><th>Хук</th><th>Слово в финале</th><th>Ведёт в</th></tr></thead><tbody id="hookRows"></tbody></table></div>
+</section>
+
+<section id="check"><h2>Что согласовать</h2>
+  <p class="lead">То, что не можем решить сами: медицина, деньги и люди.</p>
+  <div class="tbl"><table>
+    <tr><th>№</th><th>Вопрос</th><th>Что имеется в виду</th><th>Кто решает</th></tr>
+    <tr><td>1</td><td>Предложение для записи из бота</td><td>Что получает человек, который записывается через бота, и сколько оно действует. Показываем в Л2 (подбор пакета) и в Д7 (последнее касание догрева, 72 часа). Варианты: малая зона в подарок на первой процедуре, «пробный визит» по пакету Mini, −10 % на первую процедуру</td><td>Кристина Сергеевна, Алёна Олеговна</td></tr>
+    <tr><td>2</td><td>Награда «Приведи подругу»</td><td>Что получают подруга и пригласившая. Сейчас в схеме: малая зона обеим</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>3</td><td>Подарок на день рождения</td><td>Сертификат −15 % на одну процедуру, 14 дней — подходит ли размер</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>4</td><td>Медицинские формулировки</td><td>Сроки подготовки и ухода, число процедур, интервалы, когда виден результат, ответ про светлые и седые волосы</td><td>Алёна Олеговна, специалист лазера</td></tr>
+    <tr><td>5</td><td>Номер медицинской лицензии</td><td>У GLADKO SPACE номер лицензии стоит в конце подписи к каждому посту, в боте — фраза «у нас есть медицинская лицензия». Для DAT: подписи к постам, актуальное «Почему DAT», бот (С0, Д3), сайт, карточка в Яндекс Картах</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>6</td><td>«Аналогов в Геленджике нет»</td><td>Можно ли подтвердить документом; если нет — используем «аппарат премиум-класса»</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>7</td><td>Администратор</td><td>Кто получает уведомления, рабочие часы, сроки ответа из блока «Администратор»</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>8</td><td>Кто в кадре</td><td>Специалист лазера (имя для приветствия), администратор, гостьи для отзывов с согласием</td><td>Кристина Сергеевна</td></tr>
+    <tr><td>9</td><td>Цены станка и шугаринга</td><td>Для калькулятора — реальные цены Геленджика</td><td>Маркетолог, администратор</td></tr>
+  </table></div>
+  <div class="note"><b>Реклама и медицина.</b> В Instagram — без цен и акций. В боте рядом с предложением: «Имеются противопоказания, необходима консультация специалиста».</div>
+</section>
+<footer>Подготовлено для DAT clinic · ноябрь 2026. Тексты бота — черновик для согласования.</footer>
+</main>
+</div>
+<script>
+const B = {
+start:[
+ {id:"С0",t:"Приветствие и согласие",w:"Сразу",tags:["src_*","consent_pd"],fields:["consent_pd_date"],
+  text:"Здравствуйте! Это бот DAT clinic — медицинской клиники превентивной косметологии в Геленджике 🤍\n\nЛазерная эпиляция у нас — медицинская процедура: клиника работает по медицинской лицензии, перед курсом специалист проводит осмотр, протоколы утверждает главный врач.\n\nПрежде чем я пришлю материалы, нужно ваше согласие. Нажимая кнопку, вы соглашаетесь с Политикой обработки персональных данных ООО «Клиника Алены Токаренко» и даёте согласие на обработку имени, контактов и ответов в боте для связи и записи.",
+  btn:[["Даю согласие","С1"],["Прочитать документы","текст политики"]],note:"Перед текстом — видеокружок специалиста лазера (видео №1)."},
+ {id:"С1",t:"Согласие на рассылку",w:"Сразу",tags:["consent_ads","no_ads"],
+  text:"Спасибо! Можно я иногда буду присылать полезное о лазере и предложения клиники? Не чаще двух раз в неделю, отписаться — командой /stop.",
+  btn:[["Да, присылайте","С2"],["Только материал","С2, без догрева"]]},
+ {id:"С2",t:"Меню",w:"Сразу",tags:[],
+  text:"Что вам сейчас интереснее?",
+  btn:[["Подойдёт ли мне лазер — тест","Т1"],["Сколько я трачу на бритьё","К1"],["Памятка перед первой процедурой","П1"],["Сразу записаться","З0"],["Приведи подругу 🎁","ПП1"]],
+  note:"Слово ТЕСТ → сразу Т1. ЗАПИСЬ → З0. ПОДАРОК → сертификаты. ПОДРУГА → ПП2. «Приведи подругу» есть и в постоянном меню бота (кнопка ☰ в Telegram) — доступно в любой момент."}
+],
+test:[
+ {id:"Т1",t:"Тон кожи",w:"Сразу",tags:[],fields:["skin_type"],sw:true,
+  text:"Вопрос 1 из 5. Какой у вас тон кожи без загара?",
+  btn:[["Очень светлая","I–II"],["Светлая","II–III"],["Средняя, оливковая","III–IV"],["Смуглая, тёмная","V–VI"]]},
+ {id:"Т2",t:"Реакция на солнце",w:"Сразу",tags:[],
+  text:"Вопрос 2 из 5. Как кожа реагирует на солнце?",
+  btn:[["Сразу краснеет, почти не загорает"],["Краснеет, потом загорает"],["Легко загорает"],["Почти не краснеет"]]},
+ {id:"Т3",t:"Цвет волос",w:"Сразу",tags:[],fields:["hair_color"],
+  text:"Вопрос 3 из 5. Какого цвета волосы в зоне, которую хотите убрать?",
+  btn:[["Тёмные"],["Русые"],["Светлые или рыжие","→ fit_consult"],["Седые","→ fit_consult"]]},
+ {id:"Т4",t:"Что беспокоит",w:"Сразу",tags:[],fields:["concern"],
+  text:"Вопрос 4 из 5. Что беспокоит больше всего?",
+  btn:[["Раздражение после бритья"],["Вросшие волосы"],["Тёмные точки после бритья"],["Надоело тратить время"]]},
+ {id:"Т5",t:"Загар",w:"Сразу",tags:["test_done"],
+  text:"Вопрос 5 из 5. Загорали за последние 2 недели или собираетесь в ближайшее время?",
+  btn:[["Да","→ fit_prep"],["Нет"]]},
+ {id:"Т6а",t:"Результат: отличный кандидат",w:"Сразу",tags:["fit_good"],
+  text:"Похоже, лазер вам хорошо подойдёт ✨\n\nТёмные и русые волосы лучше всего откликаются на диодный лазер. Наш аппарат охлаждает кожу до −16 °C, поэтому процедура переносится мягче.\n\n[Абзац по ответу на вопрос 4 — см. ниже]\n\nТочный план составит специалист на осмотре перед первой процедурой.\n\nИдёте вместе с подругой? Нажмите «Приведи подругу 🎁» — подарок получите обе.",
+  btn:[["Подобрать пакет","Л1"],["Сначала узнать, сколько выйдет","К1"],["Приведи подругу 🎁","ПП1"]]},
+ {id:"Т6б",t:"Результат: нужна подготовка",w:"Сразу",tags:["fit_prep"],
+  text:"Лазер вам подойдёт, но после загара нужна пауза — так безопаснее для кожи.\n\nЗапишем вас на удобную дату после паузы, а пока пришлю памятку, как подготовиться.",
+  btn:[["Записаться на дату позже","Л1"],["Памятка","П1"]]},
+ {id:"Т6в",t:"Результат: нужна консультация",w:"Сразу",tags:["fit_consult"],
+  text:"Со светлыми и седыми волосами лазер работает не у всех одинаково — честно скажем это сразу.\n\nСпециалист посмотрит кожу и волосы и скажет, будет ли результат и какой метод лучше.",
+  btn:[["Записаться на консультацию","Л3"],["Задать вопрос администратору"]],
+  note:"Текст сверить с клиникой."},
+ {id:"Т7",t:"Абзацы по беспокойству",w:"Вставка в результат",tags:[],
+  text:"Раздражение: «Бритьё травмирует кожу каждый раз. После курса лазера брить приходится реже или совсем не нужно — и раздражению неоткуда взяться».\n\nВросшие волосы: «Вросшие волосы — частая история после станка и шугаринга. Лазер работает с луковицей, поэтому многим становится заметно лучше уже к середине курса».\n\nТёмные точки: «Тёмные точки после бритья часто связаны с вросшими волосами и раздражением. Специалист на осмотре скажет, что это у вас и чем поможет лазер».\n\nВремя: «Курс лазера — это несколько визитов вместо бритья через день».",
+  note:"Медицинские формулировки — согласовать с Алёной Олеговной."}
+],
+calc:[
+ {id:"К1",t:"Вопрос: метод",w:"Сразу",tags:[],fields:["method"],
+  text:"Давайте посчитаем 🧮\nКак вы сейчас удаляете волосы?",btn:[["Станок или крем"],["Шугаринг или воск"]]},
+ {id:"К2",t:"Вопрос: зоны",w:"Сразу",tags:["calc_done"],fields:["zones"],
+  text:"Какие зоны?",btn:[["Бикини + подмышки"],["+ голени"],["+ ноги полностью"]]},
+ {id:"К3",t:"Результат (пример: шугаринг, Classic)",w:"Сразу",tags:["pkg_classic"],
+  text:"Шугаринг бикини, подмышек и голеней раз в 4 недели — около 2 500 ₽ за визит.\n\nЗа год: ≈ 32 500 ₽\nЗа 5 лет: ≈ 162 500 ₽ — и это не заканчивается.\n\nКурс лазера в DAT clinic — абонемент на 6 процедур Classic: 25 200 ₽ один раз. В подарок — малая зона, карбокситерапия и «Ресурс».",
+  btn:[["Подобрать мой пакет","Л1"],["А это больно?","П1"]],
+  note:"6 вариантов ответа — по таблице выше."}
+],
+memo:[
+ {id:"П1",t:"Памятка",w:"Сразу",tags:["memo_got"],
+  text:"Памятка перед первой процедурой 🤍\n\nДо процедуры\n• За 3–4 недели — без шугаринга, воска и эпилятора: лазеру нужна луковица.\n• За 2 недели — без загара и автозагара.\n• За сутки — побрейте зону станком.\n• Расскажите специалисту о лекарствах и болезнях кожи.\n\nНа процедуре\n• Осмотр, проверка фототипа, защитные очки.\n• Охлаждение до −16 °C, ощущение — тёплое покалывание.\n• Подмышки — около 15 минут, бикини — 15–30.\n\nПосле\n• 2–3 дня без бани, сауны, скрабов.\n• SPF на открытые зоны, без загара 2 недели.\n• Лёгкое покраснение проходит за несколько часов.",
+  btn:[["Подобрать пакет","Л1"],["Остались вопросы"]],note:"Сроки — сверить с протоколом клиники."}
+],
+lead:[
+ {id:"Л1",t:"Вопрос: зоны",w:"Сразу",tags:["pkg_*"],fields:["package"],
+  text:"Какие зоны хотите?",btn:[["Бикини + подмышки","Mini"],["+ голени","Classic"],["+ ноги полностью","Premium"],["+ руки","Deluxe"],["Всё тело","Royal"]]},
+ {id:"Л2",t:"Пакет и предложение",w:"Сразу",tags:["offer_seen"],
+  text:"Вам подойдёт пакет Classic: бикини, подмышки, голени + 1 малая зона на выбор.\n\nОдна процедура — 4 500 ₽ вместо 6 100 ₽.\nАбонемент на 6 процедур — 25 200 ₽ (4 200 ₽ за процедуру) + малая зона, карбокситерапия и «Ресурс» в подарок.\n\n[Предложение для бота — по согласованию с клиникой]\n\nИмеются противопоказания, необходима консультация специалиста.",
+  btn:[["Записаться","Л3"],["Хочу абонемент","Л3"],["Вопрос администратору"]]},
+ {id:"Л3",t:"Заявка",w:"Сразу",tags:["lead_laser"],fields:["name","contact_way","call_time"],
+  text:"Отлично! Три коротких вопроса:\n1. Как вас зовут?\n2. Как удобнее связаться? [Написать в Telegram] [Позвонить]\n3. Когда удобно? [Утро] [День] [Вечер]\n\n→ «Заявка принята 🤍 Администратор напишет вам в течение 30 минут в рабочее время и подберёт дату»"},
+ {id:"Л4",t:"Уведомление администратору",w:"Сразу",tags:[],
+  text:"Новая заявка: лазер\nИмя: {name} · @username\nСвязь: {contact_way}, {call_time}\nПакет: {package}\nТест: {skin_type}, {hair_color}, {concern}\nИсточник: {src}\n[Открыть диалог]"},
+ {id:"З0",t:"Быстрая запись (слово ЗАПИСЬ)",w:"Сразу",tags:["src_zapis"],
+  text:"Запишу вас на лазер. Какие зоны?\n→ Л1 → Л3 без теста и калькулятора",note:"Для тех, кто уже решил: из сторис, отзывов, рекомендаций."},
+ {id:"Г0",t:"Сертификаты (слово ПОДАРОК)",w:"С 20 ноября",tags:["src_podarok"],
+  text:"Сертификат на лазер — подарок, который не пылится на полке 🎁\nВыберите пакет — оформим сертификат в фирменной упаковке. Предложение действует до 31 декабря.",
+  btn:[["Mini"],["Classic"],["Premium"],["Сумма на выбор"]]}
+],
+warm:[
+ {id:"Д1",t:"Частые вопросы",w:"+1 час",tags:[],text:"Пока вы думаете — три вопроса, которые нам задают чаще всего. Выберите, что интересно:",btn:[["Это больно?","Д1а"],["Сколько процедур нужно?","Д1б"],["Когда виден результат?","Д1в"]]},
+ {id:"Д1а",t:"Ответ: это больно?",w:"По кнопке",tags:[],text:"Большинство гостей описывают ощущения как тёплое покалывание.\n\nВо время вспышки аппарат охлаждает кожу до −16 °C, поэтому процедура переносится мягче. Чувствительность зависит от зоны: подмышки почти не ощущаются, бикини — чуть ярче. Если станет некомфортно, специалист подстроит параметры прямо на процедуре.",btn:[["Записаться","Л1"],["Сколько процедур?","Д1б"]],note:"Можно заменить видеокружком мастера (видео №6)."},
+ {id:"Д1б",t:"Ответ: сколько процедур?",w:"По кнопке",tags:[],text:"Волосы растут фазами, и за одну процедуру лазер работает только с теми, что сейчас активны. Поэтому нужен курс из нескольких процедур с интервалом в несколько недель.\n\nТочное число зависит от зоны, цвета волос и кожи — специалист скажет на первой процедуре. Самый выгодный вариант — абонемент на 6 процедур: в подарок малая зона, карбокситерапия и «Ресурс».",btn:[["Подобрать пакет","Л1"],["Когда виден результат?","Д1в"]],note:"Число процедур и интервалы — сверить с клиникой."},
+ {id:"Д1в",t:"Ответ: когда виден результат?",w:"По кнопке",tags:[],text:"После первой процедуры обработанные волосы начинают выпадать в течение 1–3 недель, а новые растут медленнее и тоньше.\n\nЗаметную разницу гости обычно видят к середине курса.",btn:[["Записаться","Л1"],["Это больно?","Д1а"]],note:"Сроки — сверить с клиникой."},
+ {id:"Д2",t:"Как проходит процедура",w:"+1 день",tags:[],text:"Показываем, как проходит процедура — от двери до выхода. [Видео №7, 40–60 сек]",btn:[["Записаться","Л1"]]},
+ {id:"Д2а",t:"Отзыв сразу после видео",w:"+10 минут после Д2",tags:[],text:"А вот что говорит гостья после третьей процедуры 🤍 [Видеоотзыв или скрин отзыва с Яндекс Карт]",btn:[["Хочу так же","Л1"]]},
+ {id:"Д3",t:"Клиника, а не кабинет",w:"+3 дня",tags:[],text:"Лазерная эпиляция — медицинская услуга. Три признака, что вы в клинике: медицинская лицензия, осмотр перед курсом, врач в команде. В DAT clinic есть все три.\n\n[Видео №8: Алёна Олеговна, главный врач, 30 сек]",btn:[["Подобрать пакет","Л1"]]},
+ {id:"Д4",t:"Отзыв + до/после",w:"+5 дней",tags:[],text:"«Ходила на шугаринг 4 года, после третьей процедуры лазера забыла про вросшие волосы» — [реальный отзыв с согласия + фото до/после]",btn:[["Хочу так же","Л1"]]},
+ {id:"Д5",t:"Сезон",w:"+7 дней",tags:[],text:"Чтобы быть гладкой к лету, курс лучше начинать сейчас: процедуры идут с интервалом, и к маю вы успеете пройти курс.",btn:[["Начать сейчас","Л1"]]},
+ {id:"Д5а",t:"Отзыв к сезону",w:"+10 минут после Д5",tags:[],text:"«Начала в ноябре — летом впервые не брала станок в отпуск» — [реальный отзыв с согласия]",btn:[["Записаться","Л1"]]},
+ {id:"Д6",t:"Мифы",w:"+10 дней",tags:[],text:"Миф: после лазера волосы растут гуще.\nПравда: лазер воздействует на луковицу — волосы становятся тоньше и реже.",btn:[["Ещё мифы"],["Записаться","Л1"]]},
+ {id:"Д7",t:"Предложение с датой",w:"+14 дней",tags:[],text:"[Предложение на 72 часа — см. «Что согласовать», вопрос 1]. После этого буду присылать только полезное.",btn:[["Забрать","Л3"]]}
+],
+onboard:[
+ {id:"О1",t:"Подтверждение записи",w:"Сразу после метки booked",tags:["booked"],text:"Вы записаны на {visit_date} 🤍\nАдрес: Геленджик, ул. Кирова, 121, корп. 1. Как доехать и где оставить машину — [ссылка].\nПамятку перед процедурой пришлю за 3 дня.\n\nХотите прийти с подругой? В меню бота есть «Приведи подругу 🎁» — подарок вам обеим."},
+ {id:"О2",t:"Подготовка",w:"За 3 дня",tags:[],text:"Напоминаю, как подготовиться: побрить зону за сутки, без загара и автозагара, без шугаринга и воска. Если принимаете лекарства — скажите специалисту."},
+ {id:"О3",t:"Напоминание",w:"За 1 день",tags:[],text:"Ждём вас завтра в {время} 🤍",btn:[["Подтверждаю"],["Нужно перенести","→ администратор"]]},
+ {id:"О4",t:"Уход после",w:"Через 2 часа после visited",tags:["visited"],text:"Как вы? Лёгкое покраснение — нормально, оно пройдёт. 2–3 дня без бани и скрабов, SPF на открытые зоны."},
+ {id:"О5",t:"Самочувствие",w:"+2 дня",tags:[],text:"Как кожа после процедуры?",btn:[["Всё хорошо"],["Есть вопрос","→ администратор"]]},
+ {id:"О6",t:"Отзыв",w:"+5 дней",tags:["review_asked"],text:"Нам важно ваше мнение. Если понравилось — оставьте, пожалуйста, пару слов на Яндекс Картах: так другим проще выбрать клинику. [Ссылка]",btn:[["Оставила","review_done"],["Позже"]]},
+ {id:"О7",t:"Следующая процедура",w:"Через интервал по зоне",tags:[],text:"Пора на следующую процедуру — так курс даст лучший результат. Процедура {procedure_no} из 6.",btn:[["Записаться"]],note:"Интервал по зонам — уточнить у клиники."},
+ {id:"О8",t:"Абонемент для разового визита",w:"+7 дней, если нет abon_*",tags:[],text:"Если продолжать курс, абонемент выгоднее: стоимость первой процедуры можно учесть [по согласованию].",btn:[["Узнать подробнее","→ администратор"]]},
+ {id:"О9",t:"После курса",w:"После course_done",tags:["friend_sent"],text:"Курс пройден 🎉 В подарок — «Ресурс»: узнайте, чего не хватает коже для сияния. И ещё: приведите подругу — вам обеим малая зона в подарок.",btn:[["Записаться на «Ресурс»","→ воронка КОЖА"],["Приведи подругу 🎁","ПП1"]]}
+]};
+const SW=[["#F5E3D6","I–II"],["#E9C9AE","II–III"],["#C99A72","III–IV"],["#8A5A3C","V–VI"]];
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+document.querySelectorAll("[data-blocks]").forEach(box=>{
+ const list=B[box.dataset.blocks]; let html="";
+ list.forEach(b=>{
+  const btns=(b.btn||[]).map(x=>`<span class="btn">${esc(x[0])}${x[1]?`<small>${esc(x[1])}</small>`:""}</span>`).join("");
+  const tags=(b.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")||"—";
+  const fields=(b.fields||[]).map(t=>`<span class="tag">${t}</span>`).join("");
+  const sw=b.sw?`<div class="sw">${SW.map(s=>`<figure><div class="ph" style="background:${s[0]}">сгенерировать</div><figcaption>${s[1]}</figcaption></figure>`).join("")}</div>`:"";
+  html+=`<details><summary><span class="id">${b.id}</span><span class="ttl">${esc(b.t)}</span><span class="when">${esc(b.w)}</span></summary><div class="body"><div><div class="bubble">${esc(b.text)}</div>${sw}${btns?`<div class="btns">${btns}</div>`:""}</div><div class="meta"><div><b>Когда</b>${esc(b.w)}</div><div><b>Метки</b>${tags}</div>${fields?`<div><b>Поля</b>${fields}</div>`:""}${b.note?`<div><b>Важно</b>${esc(b.note)}</div>`:""}</div></div></details>`;
+ });
+ box.innerHTML=html;
+});
+/* calculator */
+const RAZOR={mini:600,classic:900,premium:1200}, SUGAR={mini:1500,classic:2500,premium:3500}, ABON={mini:[13100,"Mini"],classic:[25200,"Classic"],premium:[34200,"Premium"]};
+const st={m:"razor",z:"classic"};
+const fmt=n=>n.toLocaleString("ru-RU").replace(/,/g," ")+" ₽";
+function calc(){
+ const y=st.m==="razor"?RAZOR[st.z]*12:SUGAR[st.z]*13;
+ const a=ABON[st.z];
+ document.getElementById("calcRes").innerHTML=`За 5 лет вы потратите<div class="big">≈ ${fmt(y*5)}</div>За год ≈ ${fmt(y)}.\n\nАбонемент лазера ${a[1]} на 6 процедур — ${fmt(a[0])} один раз.\nВ подарок: малая зона, карбокситерапия и «Ресурс».`;
+}
+document.querySelectorAll("#calcBox .seg").forEach(seg=>{
+ seg.addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return;
+  seg.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  st[seg.dataset.k]=b.dataset.v; calc();});
+});
+calc();
+/* hooks */
+const F={test:["Тест","ТЕСТ","var(--cool-soft)","var(--cool)"],calc:["Калькулятор","ГЛАДКО","var(--bronze-soft)","var(--bronze)"],memo:["Памятка","ГЛАДКО","var(--bronze-soft)","var(--bronze)"],pos:["Позиционирование","ГЛАДКО","var(--bg)","var(--ink)"],zap:["Запись","ЗАПИСЬ","var(--warn-soft)","var(--warn)"],gift:["Подарок","ПОДАРОК","var(--warn-soft)","var(--warn)"]};
+const H=[
+["Вам вообще подойдёт лазер? Проверьте за 2 минуты","test"],["Светлые волосы и лазер: честно, кому он не поможет","test"],["Загорели в отпуске — можно ли сейчас на лазер?","test"],["Тёмные точки после бритья — это не грязь","test"],["Вросшие волосы: почему станок делает только хуже","test"],["Красные точки после бритья? Метод вам не подходит","test"],["Ваш тон кожи решает, как пройдёт лазер","test"],["Почему подруге хватило 5 процедур, а вам нужно больше","test"],
+["Сколько вы потратите на бритьё до 50 лет","calc"],["Шугаринг раз в месяц — это 30 000 ₽ в год","calc"],["Лазер — это дорого? Давайте посчитаем","calc"],["Шугаринг или лазер: что выгоднее через 3 года","calc"],["Сколько часов в год вы тратите на бритьё","calc"],["Я посчитала, сколько стоят мои станки за год","calc"],
+["Это больно? Показываю первые 10 секунд процедуры","memo"],["Первая процедура: от двери до выхода","memo"],["3 ошибки перед лазером, из-за которых он не сработает","memo"],["Что нельзя делать после лазера","memo"],["Глубокое бикини на лазере: как это на самом деле","memo"],["Сколько длится процедура? Засекли","memo"],
+["Лазер в клинике и в кабинете: в чём разница","pos"],["3 вопроса, которые стоит задать перед лазером","pos"],["3 признака, что вы пришли в клинику","pos"],["Почему перед лазером вас должны осмотреть","pos"],["Что охлаждает кожу до −16 °C","pos"],["Кто должен работать на лазере","pos"],["Медицинская лицензия: зачем её спрашивать","pos"],["Один день лазерного кабинета DAT clinic","pos"],["Как проходит визит в DAT clinic","pos"],
+["Миф: после лазера волосы растут гуще","test"],["Миф: лазер — это ожог","memo"],["Миф: одной процедуры хватит","calc"],["Миф: зимой лазер не нужен","zap"],["Домашний фотоэпилятор — то же самое?","pos"],
+["Хотите гладко к лету — начинайте в ноябре","zap"],["Зимой волос не видно — самое время","zap"],["Отпуск через 2 месяца: что успеть","zap"],["Идите на лазер вдвоём с подругой","zap"],
+["Подарок, который не пылится на полке","gift"],["Что подарить себе к Новому году","gift"]];
+const chips=document.getElementById("chips"); let cur="all";
+chips.innerHTML=`<button class="chip" data-f="all" aria-pressed="true">Все · ${H.length}</button>`+Object.keys(F).map(k=>`<button class="chip" data-f="${k}" aria-pressed="false">${F[k][0]} · ${H.filter(h=>h[1]===k).length}</button>`).join("");
+function rows(){document.getElementById("hookRows").innerHTML=H.map((h,i)=>[h,i]).filter(([h])=>cur==="all"||h[1]===cur).map(([h,i])=>{const f=F[h[1]];return `<tr><td>${i+1}</td><td>${esc(h[0])}</td><td><b>${f[1]}</b></td><td><span class="fn" style="background:${f[2]};color:${f[3]}">${f[0]}</span></td></tr>`}).join("")}
+chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; cur=b.dataset.f; chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false")); rows();});
+rows();
+/* nav highlight */
+const links=[...document.querySelectorAll("nav.side a")];
+const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+en.target.id))}})},{rootMargin:"-30% 0px -60% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
