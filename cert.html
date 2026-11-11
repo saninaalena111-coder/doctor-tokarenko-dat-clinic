@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Подарочный сертификат · DAT clinic</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%81%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg-a:#f3eee7; --bg-b:#e4dbcf;
+    --ink:#1d1b19; --ink-soft:#4a4540; --ink-mute:#6f6861;
+    --accent:#8a6b4c; --label:#a27f5c; --line:#d9cfc3;
+    --serif:"Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+    --sans:"Manrope", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ebe4da;color:var(--ink)}
+  body{
+    min-height:100vh; font-family:var(--sans);
+    display:flex; flex-direction:column; align-items:center;
+    padding:24px 16px 32px; overflow-x:hidden;
+  }
+
+  /* Сцена: карточка рисуется в фиксированных 1600×900 и масштабируется под ширину экрана */
+  .stage{width:100%; max-width:1600px; position:relative}
+  .stage-inner{width:1600px; height:900px; transform-origin:0 0; position:absolute; top:0; left:0}
+
+  .card{
+    width:1600px; height:900px; position:relative; overflow:hidden;
+    border-radius:28px;
+    background:linear-gradient(135deg,var(--bg-a) 0%,#efe8df 45%,var(--bg-b) 100%);
+    box-shadow:0 30px 60px -30px rgba(60,45,30,.35);
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .veins{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+  .frame{
+    position:absolute; left:45px; top:45px; right:45px; bottom:45px;
+    border:1.5px solid rgba(138,107,76,.22); border-radius:32px; pointer-events:none;
+  }
+
+  /* Водяной знак DAT / CLINIC */
+  .mark{position:absolute; right:-52px; top:-74px; text-align:right; color:var(--ink); opacity:.07; pointer-events:none; white-space:nowrap}
+  .mark-dat{font-family:var(--serif); font-weight:600; font-size:350px; line-height:1; letter-spacing:4px}
+  .mark-clinic{font-family:var(--sans); font-weight:500; font-size:34px; letter-spacing:26px; margin-top:-28px; margin-right:12px}
+
+  /* Левая колонка */
+  .left{position:absolute; left:120px; top:150px; width:680px}
+  .title{font-family:var(--serif); font-weight:500; line-height:.98; font-size:120px; letter-spacing:-1px}
+  .title .t1{display:block; color:var(--ink)}
+  .title .t2{display:block; color:var(--accent); font-style:italic; font-weight:500; margin-top:4px}
+  .lead{margin-top:46px; font-size:24px; line-height:1.55; color:var(--ink-soft); font-weight:400; max-width:640px}
+  .foot{position:absolute; left:120px; bottom:115px; font-size:17.5px; line-height:1.65; color:var(--ink-mute)}
+
+  /* Правая «стеклянная» карточка */
+  .glass{
+    position:absolute; left:1000px; top:252px; width:500px; height:560px;
+    border-radius:34px; padding:17px;
+    background:linear-gradient(160deg,rgba(255,255,255,.75),rgba(255,255,255,.35));
+    border:1.5px solid rgba(255,255,255,.95);
+    box-shadow:0 26px 50px -18px rgba(70,52,34,.28), 0 4px 14px rgba(70,52,34,.08);
+  }
+  .sheet{
+    width:100%; height:100%; border-radius:22px; background:#fcfbf9;
+    box-shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 0 0 1px rgba(138,107,76,.08);
+    padding:30px 35px 30px; display:flex; flex-direction:column;
+  }
+  .field{border-bottom:1.2px solid var(--line); height:86px; padding-top:6px; display:flex; flex-direction:column}
+  .field + .field{margin-top:0}
+  .lbl{font-size:14px; font-weight:600; letter-spacing:3.2px; text-transform:uppercase; color:var(--label)}
+  .val{
+    font-family:var(--serif); font-weight:600; font-size:31px; line-height:1.15; color:var(--ink);
+    margin-top:auto; padding-bottom:7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-height:36px;
+  }
+  .note{margin-top:auto; font-size:15.5px; line-height:1.6; color:var(--ink-mute)}
+  .no{color:var(--ink); font-weight:600}
+  .no.empty{display:inline-block; width:66px; border-bottom:1.2px solid var(--ink-mute); height:1em; vertical-align:-2px}
+
+  /* Кнопки */
+  .actions{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:24px; width:100%}
+  .btn{
+    font:600 15px/1 var(--sans); letter-spacing:.3px; cursor:pointer;
+    padding:15px 26px; border-radius:999px; border:1.5px solid var(--accent);
+    background:var(--accent); color:#fff; min-width:190px;
+    -webkit-tap-highlight-color:transparent; transition:filter .15s, background .15s;
+  }
+  .btn:hover{filter:brightness(1.07)}
+  .btn.ghost{background:transparent; color:var(--accent)}
+  .btn.ghost:hover{background:rgba(138,107,76,.08)}
+  .btn[disabled]{opacity:.6; cursor:progress}
+  .hint{margin-top:14px; font-size:13px; color:var(--ink-mute); text-align:center; max-width:520px; line-height:1.5}
+
+  /* Превью картинки (для телефонов, где загрузка не срабатывает) */
+  .modal{position:fixed; inset:0; background:rgba(29,27,25,.82); display:none; flex-direction:column; align-items:center; justify-content:center; padding:20px 16px; z-index:10}
+  .modal.open{display:flex}
+  .modal img{max-width:100%; max-height:70vh; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,.4)}
+  .modal p{color:#f3eee7; font-size:14px; text-align:center; margin:16px 0; line-height:1.5; max-width:420px}
+  .modal .btn{min-width:150px}
+
+  @media (max-width:600px){
+    body{padding:16px 16px 28px}
+    .actions{gap:10px; margin-top:20px}
+    .btn{min-width:0; flex:1 1 0; padding:14px 10px; font-size:14px; white-space:nowrap}
+  }
+
+  /* Печать: только карточка, альбомная ориентация */
+  @page{size:A4 landscape; margin:10mm}
+  @media print{
+    html,body{background:#fff !important}
+    body{padding:0; min-height:0; display:block}
+    .actions,.hint,.modal{display:none !important}
+    .stage{width:1040px !important; height:585px !important; max-width:none; margin:0 auto}
+    .stage-inner{transform:scale(.65) !important}
+    .card{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="stage-inner" id="stageInner">
+    <div class="card" id="card">
+      <svg class="veins" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="#b9a68f" stroke-linecap="round">
+          <path d="M-40 190 C 260 120, 420 40, 640 -40" stroke-width="1.2" opacity=".22"/>
+          <path d="M-60 560 C 240 420, 520 250, 900 -30" stroke-width="1" opacity=".16"/>
+          <path d="M120 940 C 420 700, 760 460, 1180 -40" stroke-width="1.4" opacity=".14"/>
+          <path d="M520 940 C 760 760, 1040 560, 1640 120" stroke-width="1" opacity=".13"/>
+          <path d="M980 940 C 1180 800, 1380 680, 1660 520" stroke-width="1.2" opacity=".15"/>
+          <path d="M300 940 C 380 860, 470 800, 560 700" stroke-width=".8" opacity=".12"/>
+          <path d="M700 -20 C 820 120, 930 210, 1080 300" stroke-width=".8" opacity=".10"/>
+          <path d="M1250 940 C 1350 860, 1470 820, 1640 780" stroke-width=".9" opacity=".12"/>
+        </g>
+      </svg>
+      <div class="frame"></div>
+
+      <div class="mark" aria-hidden="true">
+        <div class="mark-dat">DAT</div>
+        <div class="mark-clinic">CLINIC</div>
+      </div>
+
+      <div class="left">
+        <h1 class="title"><span class="t1">Подарочный</span><span class="t2">сертификат</span></h1>
+        <p class="lead">Лазерная эпиляция в клинике превентивной косметологии — гладкость, которую приятно дарить.</p>
+      </div>
+
+      <div class="foot">
+        Геленджик, ул. Кирова, 121, корп. 1 · +7 918 049-97-19<br>
+        Имеются противопоказания, необходима консультация специалиста
+      </div>
+
+      <div class="glass">
+        <div class="sheet">
+          <div class="field"><span class="lbl">Для</span><span class="val" id="vName"></span></div>
+          <div class="field"><span class="lbl">Услуга</span><span class="val">Лазерная эпиляция</span></div>
+          <div class="field"><span class="lbl">Номинал / пакет</span><span class="val" id="vPkg"></span></div>
+          <div class="field"><span class="lbl">Действует до</span><span class="val" id="vTill"></span></div>
+          <p class="note">№ <span class="no" id="vNo"></span> · Сертификат действителен при предъявлении в&nbsp;клинике</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+  <button class="btn" id="btnPng" type="button">Скачать картинку</button>
+  <button class="btn ghost" id="btnPrint" type="button">Распечатать</button>
+</div>
+<p class="hint" id="hint" hidden></p>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Сертификат картинкой">
+  <img id="modalImg" alt="Подарочный сертификат DAT clinic">
+  <p>Если загрузка не началась — нажмите на картинку и удерживайте, затем выберите «Сохранить».</p>
+  <button class="btn ghost" id="modalClose" type="button" style="color:#f3eee7;border-color:#f3eee7">Закрыть</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script>
+(function(){
+  'use strict';
+  var W = 1600, H = 900;
+
+  /* ---------- Параметры из ссылки ---------- */
+  var params;
+  try { params = new URLSearchParams(location.search); } catch(e) { params = { get:function(){ return null; } }; }
+
+  function readParam(key, maxLen){
+    var v = params.get(key);
+    if (v == null) return '';
+    v = String(v);
+    // незаполненная переменная бота вида {%name%}, {{name}}, %name%
+    if (/^\s*(\{.*\}|%[^%]*%)\s*$/.test(v)) return '';
+    v = v.replace(/[+_]/g, ' ');
+    if (/%[0-9a-f]{2}/i.test(v)) {
+      try { v = decodeURIComponent(v); } catch(e) { /* оставить как есть */ }
+    }
+    v = v.replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (v.length > maxLen) v = v.slice(0, maxLen).trim() + '…';
+    return v;
+  }
+
+  var data = {
+    name: readParam('name', 60),
+    pkg:  readParam('pkg', 60),
+    till: readParam('till', 30),
+    no:   readParam('no', 20)
+  };
+
+  function setText(id, value){
+    var el = document.getElementById(id);
+    el.textContent = value;          // только текст, без HTML
+    if (el.classList.contains('no')) el.classList.toggle('empty', !value);
+  }
+  setText('vName', data.name);
+  setText('vPkg',  data.pkg);
+  setText('vTill', data.till);
+  setText('vNo',   data.no);
+
+  /* длинные значения уменьшаем, чтобы помещались в строку */
+  function fitValues(){
+    ['vName','vPkg','vTill'].forEach(function(id){
+      var el = document.getElementById(id), size = 31;
+      el.style.fontSize = size + 'px';
+      while (el.scrollWidth > el.clientWidth && size > 18) {
+        size -= 1; el.style.fontSize = size + 'px';
+      }
+    });
+  }
+
+  /* ---------- Масштаб под экран ---------- */
+  var stage = document.getElementById('stage'), inner = document.getElementById('stageInner');
+  function layout(){
+    var w = stage.clientWidth, s = w / W;
+    inner.style.transform = 'scale(' + s + ')';
+    stage.style.height = (H * s) + 'px';
+  }
+  layout();
+  window.addEventListener('resize', layout);
+  fitValues();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitValues(); layout(); });
+
+  /* ---------- Скачать PNG ---------- */
+  var btnPng = document.getElementById('btnPng'), hint = document.getElementById('hint');
+  var modal = document.getElementById('modal'), modalImg = document.getElementById('modalImg');
+  var isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+  function fileName(){
+    var no = (data.no || 'blank').replace(/[^0-9A-Za-zА-Яа-яЁё-]+/g, '-').replace(/^-+|-+$/g, '') || 'blank';
+    return 'DAT_sertifikat_' + no + '.png';
+  }
+
+  function showHint(text){ hint.textContent = text; hint.hidden = false; }
+
+  btnPng.addEventListener('click', function(){
+    if (typeof window.html2canvas !== 'function') {
+      showHint('Не удалось загрузить модуль сохранения. Проверьте интернет и обновите страницу.');
+      return;
+    }
+    btnPng.disabled = true; btnPng.textContent = 'Готовим…'; hint.hidden = true;
+    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    ready.then(function(){
+      return window.html2canvas(document.getElementById('card'), {
+        scale: 1.5, backgroundColor: null, useCORS: true, logging: false,
+        width: W, height: H, windowWidth: W + 100, windowHeight: H + 100, scrollX: 0, scrollY: 0,
+        onclone: function(doc){
+          var i = doc.getElementById('stageInner');
+          i.style.transform = 'none';
+          i.style.position = 'static';
+          doc.getElementById('stage').style.height = H + 'px';
+          var c = doc.getElementById('card');
+          c.style.boxShadow = 'none';
+          c.style.borderRadius = '0';
+        }
+      });
+    }).then(function(canvas){
+      return new Promise(function(res){
+        if (canvas.toBlob) canvas.toBlob(function(b){ res({ canvas: canvas, blob: b }); }, 'image/png');
+        else res({ canvas: canvas, blob: null });
+      });
+    }).then(function(r){
+      var url = r.blob ? URL.createObjectURL(r.blob) : r.canvas.toDataURL('image/png');
+      var a = document.createElement('a');
+      a.href = url; a.download = fileName(); a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); a.remove();
+      if (isTouch) { modalImg.src = r.canvas.toDataURL('image/png'); modal.classList.add('open'); }
+      if (r.blob) setTimeout(function(){ URL.revokeObjectURL(url); }, 60000);
+    }).catch(function(){
+      showHint('Не получилось сохранить картинку. Сделайте скриншот экрана или попробуйте другой браузер.');
+    }).then(function(){
+      btnPng.disabled = false; btnPng.textContent = 'Скачать картинку';
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', function(){ modal.classList.remove('open'); modalImg.removeAttribute('src'); });
+  modal.addEventListener('click', function(e){ if (e.target === modal) modal.classList.remove('open'); });
+
+  /* ---------- Печать ---------- */
+  document.getElementById('btnPrint').addEventListener('click', function(){
+    try { window.print(); } catch(e) { showHint('Печать недоступна в этом браузере — откройте ссылку в Safari или Chrome.'); }
+  });
+})();
+</script>
+</body>
+</html>
